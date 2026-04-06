@@ -3,12 +3,22 @@
 [ext_resource type="Texture2D" uid="uid://cmli87jvm5bko" path="res://asset/card_arts/universal-elfiyan.png" id="1_0gwxm"]
 [ext_resource type="Shader" uid="uid://d0t3og72kg0jg" path="res://asset/shaders/blur.gdshader" id="2_0gwxm"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="3_fi3fs"]
+[ext_resource type="PackedScene" uid="uid://cawcd4mbao033" path="res://scene/parts/ability_trigger_box.tscn" id="4_a2w1i"]
+[ext_resource type="FontVariation" uid="uid://bjluv58hf61sg" path="res://asset/fonts/inter/inter.tres" id="4_b8cso"]
+[ext_resource type="Texture2D" uid="uid://c0i8kfljarrkb" path="res://asset/card_arts/example.png" id="6_a2w1i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gwxm"]
 shader = ExtResource("2_0gwxm")
-shader_parameter/blur_amount = 2.400000114
+shader_parameter/blur_amount = 2.5
 shader_parameter/saturation = 1.6
-shader_parameter/tint = Color(0.03137255, 0.039215688, 0.08627451, 0.16078432)
+shader_parameter/tint = Color(0.03137255, 0.039215688, 0.08627451, 0.4509804)
+
+[sub_resource type="Gradient" id="Gradient_8pn3e"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(0.16078432, 0.4745098, 1, 1, 1, 1, 1, 0.05882353, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a2w1i"]
+gradient = SubResource("Gradient_8pn3e")
 
 [node name="UnitCard" type="Control" unique_id=595865006]
 layout_mode = 3
@@ -17,8 +27,8 @@ anchors_preset = 0
 [node name="CardContainer" type="Control" parent="." unique_id=934905130]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 421.0
-offset_bottom = 636.0
+offset_right = 352.0
+offset_bottom = 492.0
 
 [node name="TextureContainer" type="Control" parent="CardContainer" unique_id=1654516441]
 clip_contents = true
@@ -31,14 +41,13 @@ grow_vertical = 2
 
 [node name="TextureArt" type="TextureRect" parent="CardContainer/TextureContainer" unique_id=1835029970]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 625.7778
 grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("1_0gwxm")
 expand_mode = 5
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="InfoContainer" type="VBoxContainer" parent="CardContainer" unique_id=2062988425]
 layout_mode = 1
@@ -59,6 +68,7 @@ layout_mode = 2
 color = Color(0.16078432, 0.4745098, 1, 1)
 
 [node name="InfoContainer" type="MarginContainer" parent="CardContainer/InfoContainer" unique_id=563711645]
+custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 
 [node name="BackgroundBlur" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer" unique_id=69072794]
@@ -73,15 +83,100 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer" unique_id=1186045139]
+[node name="VBoxContainer" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer" unique_id=1635060212]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=912488435]
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=753847694]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 11
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer" unique_id=289947450]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fi3fs")
-text = "Universal Elfiyan"
+theme_override_font_sizes/font_size = 18
+text = "IRON VANGUARD"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1046481214]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2" unique_id=53285700]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1154984559]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16078432, 0.4745098, 1, 1)
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 9
+text = "AVALON"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=213644785]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(1, 1, 1, 0.078431375)
+
+[node name="Label2" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=99732960]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.3019608)
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 8
+text = "UNIT"
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1860674085]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer3" unique_id=1153638549]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_a2w1i")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1164193337]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2" unique_id=1138246420]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2020350342]
+layout_mode = 2
+
+[node name="MarginContainer4" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1400766382 instance=ExtResource("4_a2w1i")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=764408755]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/MarginContainer" unique_id=85118170]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b8cso")
+theme_override_font_sizes/font_size = 11
+text = "Deal 10 ATK for 2 turns"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2" unique_id=131904832]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1093992184]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 7
+text = "SP ATK"
 
 [node name="WhiteOutline" type="MarginContainer" parent="CardContainer" unique_id=1510602839]
+visible = false
 modulate = Color(1, 1, 1, 0.050980393)
 z_index = 1
 layout_mode = 1
@@ -114,3 +209,10 @@ size_flags_horizontal = 8
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_vertical = 8
+
+[node name="Example" type="Sprite2D" parent="." unique_id=436013225]
+visible = false
+modulate = Color(1, 1, 1, 0.38431373)
+position = Vector2(176, 246.00002)
+scale = Vector2(0.6399999, 0.6399999)
+texture = ExtResource("6_a2w1i")

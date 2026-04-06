@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cawcd4mbao033"]
+
+[ext_resource type="Script" uid="uid://dev12cgfbjlqj" path="res://scene/parts/ability_trigger_box.gd" id="1_4kfj4"]
+[ext_resource type="Texture2D" uid="uid://ep2e58yhaxq5" path="res://asset/textures/icon/ri--megaphone-fill.svg" id="1_pt3ac"]
+[ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="2_4kfj4"]
+
+[node name="AbilityTriggerBox" type="MarginContainer" unique_id=1400766382]
+script = ExtResource("1_4kfj4")
+ability_type = "Error"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=733226044]
+layout_mode = 2
+color = Color(0.16078432, 0.4745098, 1, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1616732583]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1724910295]
+custom_minimum_size = Vector2(25, 15)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Control" unique_id=1411066892]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/Control/MarginContainer2" unique_id=167465403]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control/MarginContainer2/Control" unique_id=1640674359]
+custom_minimum_size = Vector2(15, 9)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pt3ac")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1655816094]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer" unique_id=1957090556]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4kfj4")
+theme_override_font_sizes/font_size = 10
+text = "Error"

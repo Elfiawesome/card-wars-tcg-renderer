@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dldi24576xf83"]
+
+[ext_resource type="Script" uid="uid://c0lbk2hyv45i2" path="res://scene/parts/sp_grid_container.gd" id="1_g0bjw"]
+
+[node name="SPGridContainer" type="GridContainer" unique_id=42262648]
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 3
+script = ExtResource("1_g0bjw")

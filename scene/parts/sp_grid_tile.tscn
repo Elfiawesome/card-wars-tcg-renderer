@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cyss4lrjmihad"]
+
+[node name="SPGridTile" type="NinePatchRect" unique_id=1270248852]
+texture_filter = 1
+custom_minimum_size = Vector2(15, 15)
+region_rect = Rect2(0, 0, 3, 3)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
