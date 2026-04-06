@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c8q737s43tss2"]
+
+[ext_resource type="Script" uid="uid://s4uia5ly0tut" path="res://scene/renderer.gd" id="1_fhffg"]
+[ext_resource type="PackedScene" uid="uid://8c5qmt2osg8k" path="res://scene/unit_card.tscn" id="1_pk4m5"]
+
+[node name="Renderer" type="Node2D" unique_id=1105215447]
+script = ExtResource("1_fhffg")
+
+[node name="Renderer" type="SubViewport" parent="." unique_id=1403347529]
+render_target_update_mode = 4
+
+[node name="UnitCard" parent="." unique_id=595865006 instance=ExtResource("1_pk4m5")]

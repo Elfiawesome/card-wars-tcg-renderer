@@ -1,0 +1,762 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CARD WARS — TCG CARD TEMPLATE SYSTEM
+   3 Variants: Unit (Blue) · Spell (Green) · Hero (Red)
+   Glassmorphism · Color-coded Stats
+   ============================================================ */
+
+/* === PAGE LAYOUT === */
+.page-bg {
+	background: #07070c;
+	background-image:
+		radial-gradient(ellipse at 20% 50%, rgba(41, 121, 255, 0.03) 0%, transparent 60%),
+		radial-gradient(ellipse at 80% 50%, rgba(255, 23, 68, 0.03) 0%, transparent 60%);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 24px;
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.page-header {
+	text-align: center;
+	margin-bottom: 56px;
+}
+
+.page-header h1 {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	font-size: 32px;
+	letter-spacing: 14px;
+	color: rgba(255, 255, 255, 0.85);
+	text-transform: uppercase;
+}
+
+.page-header p {
+	font-family: 'Inter', sans-serif;
+	font-size: 11px;
+	letter-spacing: 4px;
+	color: rgba(255, 255, 255, 0.2);
+	text-transform: uppercase;
+	margin-top: 6px;
+}
+
+.card-gallery {
+	display: flex;
+	gap: 48px;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+.card-label {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ============================================================
+   CARD BASE
+   ============================================================ */
+.card {
+	--theme: #2979ff;
+	--theme-dim: rgba(41, 121, 255, 0.12);
+	--theme-glow: rgba(41, 121, 255, 0.18);
+
+	position: relative;
+	width: 352px;
+	height: 492px;
+	overflow: hidden;
+	flex-shrink: 0;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	box-shadow:
+		0 0 40px var(--theme-glow),
+		0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+/* === CARD TYPE THEMES === */
+.card.unit {
+	--theme: #2979ff;
+	--theme-dim: rgba(41, 121, 255, 0.12);
+	--theme-glow: rgba(41, 121, 255, 0.18);
+}
+
+.card.spell {
+	--theme: #00e676;
+	--theme-dim: rgba(0, 230, 118, 0.12);
+	--theme-glow: rgba(0, 230, 118, 0.18);
+}
+
+.card.hero {
+	--theme: #ff1744;
+	--theme-dim: rgba(255, 23, 68, 0.12);
+	--theme-glow: rgba(255, 23, 68, 0.18);
+	/* Landscape orientation */
+	width: 492px;
+	height: 352px;
+}
+
+
+/* === INNER FRAME — subtle premium glass border === */
+.card::after {
+	content: '';
+	position: absolute;
+	inset: 4px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.01);
+	z-index: 30;
+	pointer-events: none;
+}
+
+
+/* ============================================================
+   FULL-BLEED CHARACTER ART
+   ============================================================ */
+.card-art {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+
+/* Gradient vignette — darkens edges + bottom for panel readability */
+.card-art::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(180deg,
+			rgba(0, 0, 0, 0.25) 0%,
+			rgba(0, 0, 0, 0.0) 12%,
+			rgba(0, 0, 0, 0.0) 50%,
+			rgba(0, 0, 0, 0.35) 100%),
+		linear-gradient(90deg,
+			rgba(0, 0, 0, 0.1) 0%,
+			transparent 18%,
+			transparent 82%,
+			rgba(0, 0, 0, 0.1) 100%);
+	z-index: 1;
+}
+
+/* Hero card — darken bottom for panel */
+.card.hero .card-art::after {
+	background:
+		linear-gradient(180deg,
+			rgba(0, 0, 0, 0.2) 0%,
+			rgba(0, 0, 0, 0.0) 15%,
+			rgba(0, 0, 0, 0.0) 45%,
+			rgba(0, 0, 0, 0.55) 100%),
+		linear-gradient(90deg,
+			rgba(0, 0, 0, 0.1) 0%,
+			transparent 15%,
+			transparent 85%,
+			rgba(0, 0, 0, 0.1) 100%);
+}
+
+
+/* ============================================================
+   COST BADGE (PT) — Top-left geometric badge — PURPLE
+   ============================================================ */
+.card-cost {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 15;
+	background: #8b5cf6;
+	color: #fff;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	clip-path: polygon(0 0, 100% 0, 100% 58%, 58% 100%, 0 100%);
+	filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.5));
+}
+
+.cost-value {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 1;
+}
+
+.cost-label {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	font-size: 7px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	opacity: 0.8;
+	margin-top: -2px;
+}
+
+/* HRT badge variant — red with glow */
+.card-hrt {
+	background: #ff1744;
+	width: 54px;
+	height: 54px;
+	clip-path: polygon(0 0, 100% 0, 100% 54%, 54% 100%, 0 100%);
+	filter: drop-shadow(0 0 14px rgba(255, 23, 68, 0.5));
+}
+
+.card-hrt .cost-value {
+	font-size: 24px;
+}
+
+
+/* ============================================================
+   INFO PANEL — GLASSMORPHISM
+   Bottom overlay (portrait) / Bottom panel (hero)
+   ============================================================ */
+.card-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	padding: 12px 14px 10px;
+
+	/* Glassmorphism */
+	background: rgba(8, 10, 22, 0.55);
+	backdrop-filter: blur(24px) saturate(160%);
+	-webkit-backdrop-filter: blur(24px) saturate(160%);
+	border-top: 2px solid var(--theme);
+
+	/* Glass edge highlights */
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.07),
+		inset 0 0 20px var(--theme-dim);
+}
+
+/* Glass light reflection */
+.card-info .glass-shine {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40%;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+	pointer-events: none;
+	z-index: -1;
+}
+
+/* Gradient fade above panel */
+.card-info::before {
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	right: 0;
+	height: 50px;
+	background: linear-gradient(to top, rgba(8, 10, 22, 0.5), transparent);
+	pointer-events: none;
+}
+
+
+/* --- HERO: Bottom panel (landscape-optimized) --- */
+.card.hero .card-info {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: auto;
+	/* width: 100%; */
+	border-top: 2px solid var(--theme);
+	border-left: none;
+	padding: 10px 16px 9px;
+}
+
+.card.hero .card-info::before {
+	bottom: 100%;
+	left: 0;
+	right: 0;
+	top: auto;
+	width: 100%;
+	height: 55px;
+	background: linear-gradient(to top, rgba(8, 10, 22, 0.5), transparent);
+}
+
+/* Hero horizontal content layout */
+.hero-content {
+	display: flex;
+	gap: 0;
+	align-items: stretch;
+}
+
+.hero-left {
+	flex-shrink: 0;
+	padding-right: 14px;
+	border-right: 1px solid rgba(255, 255, 255, 0.06);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 155px;
+}
+
+.hero-right {
+	flex: 1;
+	min-width: 0;
+	padding-left: 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.hero-flavor {
+	margin-top: 6px;
+	padding-top: 6px;
+	border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+
+/* ============================================================
+   CARD HEADER — Name + Stats (inline)
+   ============================================================ */
+.card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 10px;
+	margin-bottom: 2px;
+}
+
+.card-header-text {
+	flex: 1;
+	min-width: 0;
+}
+
+.card-name {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	font-size: 17px;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	line-height: 1.1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Hero card name */
+.card.hero .card-name {
+	font-size: 16px;
+	letter-spacing: 2px;
+	white-space: normal;
+	line-height: 1.15;
+}
+
+.card-meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 3px;
+}
+
+.card-world {
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 9px;
+	color: var(--theme);
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-weight: 600;
+}
+
+.card-type-tag {
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 8px;
+	color: rgba(255, 255, 255, 0.3);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 500;
+	padding-left: 8px;
+	border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* ============================================================
+   INLINE STATS — HP & ATK in the header
+   COLOR-CODED:
+     HP  → Green (#4ade80)
+     ATK → Red   (#f87171)
+   Glassmorphism stat badges
+   ============================================================ */
+.card-header-stats {
+	display: flex;
+	gap: 3px;
+	flex-shrink: 0;
+	align-self: flex-start;
+	margin-top: 1px;
+}
+
+.header-stat {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 9px;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+/* HP stat — Green */
+.header-stat.stat-hp {
+	background: rgba(74, 222, 128, 0.08);
+	border: 1px solid rgba(74, 222, 128, 0.15);
+	border-top: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.header-stat.stat-hp i {
+	font-size: 13px;
+	color: #4ade80;
+	line-height: 1;
+}
+
+.header-stat.stat-hp .stat-val {
+	color: #4ade80;
+}
+
+/* ATK stat — Red */
+.header-stat.stat-atk {
+	background: rgba(248, 113, 113, 0.08);
+	border: 1px solid rgba(248, 113, 113, 0.15);
+	border-top: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.header-stat.stat-atk i {
+	font-size: 13px;
+	color: #f87171;
+	line-height: 1;
+}
+
+.header-stat.stat-atk .stat-val {
+	color: #f87171;
+}
+
+.stat-val {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: 0.5px;
+}
+
+
+/* ============================================================
+   DIVIDER — theme-colored gradient line
+   ============================================================ */
+.card-divider {
+	height: 1px;
+	background: linear-gradient(to right,
+			var(--theme) 0%,
+			rgba(255, 255, 255, 0.06) 50%,
+			transparent 100%);
+	margin: 6px 0 7px;
+}
+
+/* Hero divider spans full width */
+.card.hero .card-divider-hero {
+	height: 1px;
+	background: linear-gradient(to right,
+			var(--theme) 0%,
+			rgba(255, 255, 255, 0.06) 40%,
+			transparent 100%);
+	margin: 0 0 6px;
+}
+
+
+/* ============================================================
+   CARD BODY — Ability + SP ATK side by side
+   ============================================================ */
+.card-body {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 10px;
+}
+
+.card-body .card-ability {
+	flex: 1;
+	min-width: 0;
+}
+
+
+/* ============================================================
+   SP ATK GRID — 3×3 Special Attack Visualizer
+   ============================================================ */
+.sp-atk {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 2px;
+	flex-shrink: 0;
+}
+
+.sp-atk-label {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	font-size: 7px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba(255, 255, 255, 0.25);
+}
+
+.sp-atk-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2px;
+}
+
+.sp-atk-grid .tile {
+	width: 14px;
+	height: 14px;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 8px;
+	font-weight: 700;
+	color: transparent;
+}
+
+/* Active tile — full damage */
+.sp-atk-grid .tile.active {
+	background: var(--theme);
+	border-color: var(--theme);
+	color: #fff;
+}
+
+/* Dimmed active tile — reduced/splash damage */
+.sp-atk-grid .tile.active-dim {
+	background: color-mix(in srgb, var(--theme) 30%, transparent);
+	border-color: color-mix(in srgb, var(--theme) 50%, transparent);
+	color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* ============================================================
+   ABILITY SECTION — Trigger tag + Effect text
+   ============================================================ */
+.card-ability {
+	margin-bottom: 5px;
+}
+
+.ability-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	color: #fff;
+	background: var(--theme);
+	padding: 2px 14px 2px 7px;
+	margin-bottom: 5px;
+	clip-path: polygon(0 0, 100% 0, calc(100% - 7px) 100%, 0 100%);
+}
+
+.ability-trigger .trigger-icon {
+	font-size: 11px;
+	line-height: 1;
+}
+
+.ability-effect {
+	font-family: 'Inter', sans-serif;
+	font-size: 10.5px;
+	color: rgba(255, 255, 255, 0.75);
+	line-height: 1.55;
+	margin-block: 0;
+}
+
+
+/* ============================================================
+   DESCRIPTION — For Spell cards
+   ============================================================ */
+.card-description {
+	font-family: 'Inter', sans-serif;
+	font-size: 10.5px;
+	color: rgba(255, 255, 255, 0.75);
+	line-height: 1.55;
+	margin-bottom: 8px;
+}
+
+
+/* ============================================================
+   FLAVOR TEXT
+   ============================================================ */
+.card-flavor {
+	font-family: 'Inter', sans-serif;
+	font-size: 8.5px;
+	color: rgba(255, 255, 255, 0.2);
+	font-style: italic;
+	line-height: 1.45;
+	border-top: 1px solid rgba(255, 255, 255, 0.04);
+	padding-top: 6px;
+}
+
+
+/* ============================================================
+   INLINE ICONS — Wrapper system
+   Usage: <span class="icon-atk"><i class="ri-sword-fill"></i></span>
+   ============================================================ */
+[class^="icon-"],
+[class*=" icon-"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+	font-style: normal;
+	margin: 0 1px;
+	position: relative;
+	top: -1px;
+}
+
+[class^="icon-"] i,
+[class*=" icon-"] i {
+	font-size: 11px;
+	line-height: 1;
+}
+
+/* Color-coded inline icons */
+.icon-atk {
+	color: #f87171;
+}
+
+.icon-hp {
+	color: #4ade80;
+}
+
+.icon-pt {
+	color: #a78bfa;
+}
+
+.icon-hrt {
+	color: #ff1744;
+}
+
+.icon-shield {
+	color: #fbbf24;
+}
+
+.icon-mana {
+	color: #a78bfa;
+}
+
+
+/* ============================================================
+   HIGHLIGHT / INLINE VALUE CLASSES
+   ============================================================ */
+.highlight-damage {
+	color: #f87171;
+	font-weight: 700;
+}
+
+.highlight-heal {
+	color: #4ade80;
+	font-weight: 700;
+}
+
+.highlight-keyword {
+	color: #fbbf24;
+	font-weight: 600;
+}
+
+.highlight-value {
+	color: #fff;
+	font-weight: 700;
+}
+
+.highlight-mana {
+	color: #a78bfa;
+	font-weight: 700;
+}
+
+.highlight-buff {
+	color: #c084fc;
+	font-weight: 700;
+}
+
+
+/* ============================================================
+   CARD ID / EDITION TAG — Bottom corner stamp
+   ============================================================ */
+.card-id {
+	position: absolute;
+	bottom: 5px;
+	right: 8px;
+	z-index: 15;
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 7px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	color: rgba(255, 255, 255, 0.1);
+	text-transform: uppercase;
+}
+
+
+/* ============================================================
+   SP ATK GRID PATTERN REFERENCE (below cards)
+   ============================================================ */
+.pattern-showcase {
+	margin-top: 64px;
+	text-align: center;
+}
+
+.pattern-showcase h3 {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.2);
+	margin-bottom: 24px;
+}
+
+.pattern-row {
+	display: flex;
+	gap: 36px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.pattern-example {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+.pattern-example .sp-atk-grid {
+	--theme: #2979ff;
+}
+
+.pattern-name {
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 9px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.25);
+}
