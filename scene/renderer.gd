@@ -12,10 +12,11 @@ func _input(event: InputEvent) -> void:
 			pass
 
 func _render() -> void:
-	renderer.size = unit_card.get_child(0).size * 2
+	var upscale: float = 2.5
+	renderer.size = unit_card.get_child(0).size * upscale
 	var original_parent := unit_card.get_parent()
 	unit_card.reparent(renderer)
-	unit_card.scale = Vector2(2,2)
+	unit_card.scale = Vector2(upscale, upscale)
 	
 	# WAIT for the engine to render the viewport
 	await RenderingServer.frame_post_draw

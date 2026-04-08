@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://8c5qmt2osg8k"]
 
 [ext_resource type="Texture2D" uid="uid://cmli87jvm5bko" path="res://asset/card_arts/universal-elfiyan.png" id="1_0gwxm"]
+[ext_resource type="Texture2D" uid="uid://bvbgcpyqskvin" path="res://asset/card_arts/kyle.webp" id="1_ppt4e"]
 [ext_resource type="Shader" uid="uid://d0t3og72kg0jg" path="res://asset/shaders/blur.gdshader" id="2_0gwxm"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="3_fi3fs"]
-[ext_resource type="PackedScene" uid="uid://cawcd4mbao033" path="res://scene/parts/ability_trigger_box.tscn" id="4_a2w1i"]
-[ext_resource type="FontVariation" uid="uid://bjluv58hf61sg" path="res://asset/fonts/inter/inter.tres" id="4_b8cso"]
+[ext_resource type="Texture2D" uid="uid://ep2e58yhaxq5" path="res://asset/textures/icon/ri--megaphone-fill.svg" id="4_8pn3e"]
+[ext_resource type="Texture2D" uid="uid://dhqkm4keqsyhr" path="res://asset/textures/icon/ri--heart-fill.svg" id="4_f1nea"]
+[ext_resource type="Texture2D" uid="uid://b07obi1nosrck" path="res://asset/textures/icon/ri--sword-fill.svg" id="4_m05dj"]
+[ext_resource type="Texture2D" uid="uid://wck81ufh6o1m" path="res://asset/textures/icon/star.svg" id="4_qawnb"]
 [ext_resource type="Texture2D" uid="uid://c0i8kfljarrkb" path="res://asset/card_arts/example.png" id="6_a2w1i"]
+[ext_resource type="FontVariation" uid="uid://bjluv58hf61sg" path="res://asset/fonts/inter/inter.tres" id="6_m05dj"]
+[ext_resource type="Texture2D" uid="uid://d1pxi4dbq0ieq" path="res://asset/textures/icon/crystal.svg" id="10_g0y7p"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gwxm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2w1i"]
 shader = ExtResource("2_0gwxm")
 shader_parameter/blur_amount = 2.5
 shader_parameter/saturation = 1.6
@@ -19,6 +24,19 @@ colors = PackedColorArray(0.16078432, 0.4745098, 1, 1, 1, 1, 1, 0.05882353, 0, 0
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a2w1i"]
 gradient = SubResource("Gradient_8pn3e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gwxm"]
+shader = ExtResource("2_0gwxm")
+shader_parameter/blur_amount = 1.0000000475
+shader_parameter/saturation = 1.6
+shader_parameter/tint = Color(0.03137255, 0.039215688, 0.08627451, 0.4509804)
+
+[sub_resource type="Gradient" id="Gradient_ppt4e"]
+colors = PackedColorArray(1, 1, 1, 0.19215687, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1n40d"]
+gradient = SubResource("Gradient_ppt4e")
+fill_to = Vector2(0, 1)
 
 [node name="UnitCard" type="Control" unique_id=595865006]
 layout_mode = 3
@@ -39,7 +57,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/TextureContainer" unique_id=1403931678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="TextureArt2" type="TextureRect" parent="CardContainer/TextureContainer/MarginContainer" unique_id=1134226534]
+layout_mode = 2
+texture = ExtResource("1_ppt4e")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="TextureArt" type="TextureRect" parent="CardContainer/TextureContainer" unique_id=1835029970]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -54,12 +91,129 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 alignment = 2
+
+[node name="NameContainer" type="MarginContainer" parent="CardContainer/InfoContainer" unique_id=518911392]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="BackgroundBlur" type="ColorRect" parent="CardContainer/InfoContainer/NameContainer" unique_id=2123128436]
+material = SubResource("ShaderMaterial_a2w1i")
+layout_mode = 2
+color = Color(0.03137255, 0.039215688, 0.08627451, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/NameContainer" unique_id=139714669]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NameInfoContainer" type="MarginContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer" unique_id=1935982358]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer" unique_id=311621225]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer" unique_id=293630926]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/Control" unique_id=201137071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/Control/MarginContainer" unique_id=1616018669]
+modulate = Color(0.54509807, 0.36078432, 0.9647059, 1)
+layout_mode = 2
+texture = ExtResource("10_g0y7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/Control/MarginContainer" unique_id=1605881433]
+modulate = Color(0.88899827, 0.8118024, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 32
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer" unique_id=742837663]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer" unique_id=314134182]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 18
+text = "BOUNTY HUNTER KYLE"
+
+[node name="WorldTypeContainer" type="MarginContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer" unique_id=1180561062]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer/WorldTypeContainer" unique_id=197986812]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WorldLable" type="Label" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer/WorldTypeContainer/HBoxContainer" unique_id=1382824555]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16078432, 0.4745098, 1, 1)
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 9
+text = "SOUTH PARK"
+vertical_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer/WorldTypeContainer/HBoxContainer" unique_id=1321653080]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(1, 1, 1, 0.078431375)
+
+[node name="TypeDivider" type="Label" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer/WorldTypeContainer/HBoxContainer" unique_id=134240093]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.3019608)
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 8
+text = "UNIT"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer" unique_id=382696569]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=921823797]
+modulate = Color(0.16078432, 0.4745098, 1, 1)
+custom_minimum_size = Vector2(9, 9)
+layout_mode = 2
+texture = ExtResource("4_qawnb")
+expand_mode = 1
+
+[node name="GradientTexture" type="TextureRect" parent="CardContainer/InfoContainer/NameContainer/HBoxContainer/NameInfoContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=218586584]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_a2w1i")
+expand_mode = 1
 
 [node name="TopDivider" type="ColorRect" parent="CardContainer/InfoContainer" unique_id=368075790]
 z_index = 1
@@ -68,13 +222,16 @@ layout_mode = 2
 color = Color(0.16078432, 0.4745098, 1, 1)
 
 [node name="InfoContainer" type="MarginContainer" parent="CardContainer/InfoContainer" unique_id=563711645]
-custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 
 [node name="BackgroundBlur" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer" unique_id=69072794]
 material = SubResource("ShaderMaterial_0gwxm")
 layout_mode = 2
 color = Color(0.03137255, 0.039215688, 0.08627451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer" unique_id=1847441733]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_1n40d")
 
 [node name="MainInfoContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer" unique_id=247049199]
 layout_mode = 2
@@ -87,28 +244,28 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=753847694]
+[node name="NameContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=753847694]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_top = 12
+theme_override_constants/margin_top = 14
 theme_override_constants/margin_bottom = 11
 
-[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer" unique_id=289947450]
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/NameContainer" unique_id=289947450]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fi3fs")
 theme_override_font_sizes/font_size = 18
 text = "IRON VANGUARD"
 
-[node name="MarginContainer2" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1046481214]
+[node name="WorldTypeContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1046481214]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2" unique_id=53285700]
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/WorldTypeContainer" unique_id=53285700]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1154984559]
+[node name="WorldLable" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/WorldTypeContainer/HBoxContainer" unique_id=1154984559]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16078432, 0.4745098, 1, 1)
 theme_override_fonts/font = ExtResource("3_fi3fs")
@@ -116,13 +273,13 @@ theme_override_font_sizes/font_size = 9
 text = "AVALON"
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=213644785]
+[node name="Divider" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/WorldTypeContainer/HBoxContainer" unique_id=213644785]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 color = Color(1, 1, 1, 0.078431375)
 
-[node name="Label2" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=99732960]
+[node name="TypeDivider" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/WorldTypeContainer/HBoxContainer" unique_id=99732960]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.3019608)
 theme_override_fonts/font = ExtResource("3_fi3fs")
@@ -130,50 +287,159 @@ theme_override_font_sizes/font_size = 8
 text = "UNIT"
 vertical_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1860674085]
+[node name="DividerContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1860674085]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 11
 
-[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/MarginContainer3" unique_id=1153638549]
+[node name="GradientTexture" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/DividerContainer" unique_id=1153638549]
 layout_mode = 2
 texture = SubResource("GradientTexture1D_a2w1i")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1164193337]
+[node name="StatContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=1543713742]
+layout_mode = 2
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer" unique_id=636605345]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2" unique_id=1138246420]
+[node name="HpContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer" unique_id=1675877515]
+modulate = Color(0.2901961, 0.87058824, 0.5019608, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2020350342]
-layout_mode = 2
-
-[node name="MarginContainer4" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1400766382 instance=ExtResource("4_a2w1i")]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=764408755]
-layout_mode = 2
-theme_override_constants/margin_top = 1
-
-[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/MarginContainer" unique_id=85118170]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_b8cso")
-theme_override_font_sizes/font_size = 11
-text = "Deal 10 ATK for 2 turns"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2" unique_id=131904832]
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/HpContainer" unique_id=1943263220]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 2
 
-[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1093992184]
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/HpContainer/HBoxContainer" unique_id=1980556591]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/HpContainer/HBoxContainer/MarginContainer" unique_id=2044486387]
+layout_mode = 2
+texture = ExtResource("4_f1nea")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/HpContainer/HBoxContainer" unique_id=1211825131]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_fi3fs")
-theme_override_font_sizes/font_size = 7
-text = "SP ATK"
+theme_override_font_sizes/font_size = 24
+text = "12"
+
+[node name="Divider" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer" unique_id=570978827]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+color = Color(1, 1, 1, 0.3019608)
+
+[node name="AtkContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer" unique_id=1215420418]
+modulate = Color(0.972549, 0.44313726, 0.44313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/AtkContainer" unique_id=1862939741]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/AtkContainer/HBoxContainer" unique_id=1994711437]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/AtkContainer/HBoxContainer/MarginContainer" unique_id=695336582]
+layout_mode = 2
+texture = ExtResource("4_m05dj")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/StatContainer/HBoxContainer/AtkContainer/HBoxContainer" unique_id=1116769164]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 24
+text = "14"
+
+[node name="Ability" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=223469508]
+layout_mode = 2
+
+[node name="AbilityTriggerContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability" unique_id=558000028]
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer" unique_id=1445365858]
+layout_mode = 2
+color = Color(0.16078432, 0.4745098, 1, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer" unique_id=1540438567]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer" unique_id=874057325]
+custom_minimum_size = Vector2(25, 17)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer/Control" unique_id=1649278274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer/Control/MarginContainer" unique_id=1527488849]
+layout_mode = 2
+texture = ExtResource("4_8pn3e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer" unique_id=1168143403]
+layout_mode = 2
+theme_override_constants/margin_right = 5
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer/MarginContainer" unique_id=1354870639]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_fi3fs")
+theme_override_font_sizes/font_size = 10
+text = "ATTACK"
+
+[node name="AbilityDescription" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability" unique_id=1426467362]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_m05dj")
+theme_override_font_sizes/font_size = 10
+text = "All ally units +4 [ATK]"
+vertical_alignment = 1
+
+[node name="Divider2Container" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=777582917]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="ColorRect" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Divider2Container" unique_id=1280221738]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+color = Color(1, 1, 1, 0.118)
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=987717512]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.77254903)
+theme_override_fonts/font = ExtResource("6_m05dj")
+theme_override_font_sizes/font_size = 9
+text = "\"Forged in the ancient fires of Avalon, the Vanguard holds the line between worlds.\""
+autowrap_mode = 3
 
 [node name="WhiteOutline" type="MarginContainer" parent="CardContainer" unique_id=1510602839]
 visible = false

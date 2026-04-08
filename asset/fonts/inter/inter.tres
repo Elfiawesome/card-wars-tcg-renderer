@@ -1,6 +1,10 @@
 [gd_resource type="FontVariation" format=3 uid="uid://bjluv58hf61sg"]
 
-[ext_resource type="FontFile" uid="uid://na0pb66vjfpf" path="res://asset/fonts/inter/inter.ttf" id="1_fp27y"]
+[ext_resource type="FontFile" uid="uid://c5e5sqfayk0df" path="res://asset/fonts/inter/inter.ttf" id="1_fp27y"]
 
 [resource]
 base_font = ExtResource("1_fp27y")
+variation_opentype = {
+1869640570: 14,
+2003265652: 600
+}
