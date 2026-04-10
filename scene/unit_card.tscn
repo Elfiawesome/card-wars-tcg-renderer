@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bvbgcpyqskvin" path="res://asset/card_arts/kyle.webp" id="1_ppt4e"]
 [ext_resource type="Shader" uid="uid://d0t3og72kg0jg" path="res://asset/shaders/blur.gdshader" id="2_0gwxm"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="3_fi3fs"]
-[ext_resource type="Texture2D" uid="uid://ep2e58yhaxq5" path="res://asset/textures/icon/ri--megaphone-fill.svg" id="4_8pn3e"]
 [ext_resource type="Texture2D" uid="uid://dhqkm4keqsyhr" path="res://asset/textures/icon/ri--heart-fill.svg" id="4_f1nea"]
 [ext_resource type="Texture2D" uid="uid://b07obi1nosrck" path="res://asset/textures/icon/ri--sword-fill.svg" id="4_m05dj"]
 [ext_resource type="Texture2D" uid="uid://wck81ufh6o1m" path="res://asset/textures/icon/star.svg" id="4_qawnb"]
 [ext_resource type="Texture2D" uid="uid://c0i8kfljarrkb" path="res://asset/card_arts/example.png" id="6_a2w1i"]
-[ext_resource type="FontVariation" uid="uid://bjluv58hf61sg" path="res://asset/fonts/inter/inter.tres" id="6_m05dj"]
+[ext_resource type="Texture2D" uid="uid://wcvfo6glsndr" path="res://asset/textures/icon/ri--knife-fill.svg" id="9_1n40d"]
+[ext_resource type="PackedScene" uid="uid://bcn8333rsty1y" path="res://scene/parts/ability_text.tscn" id="9_q57fe"]
 [ext_resource type="Texture2D" uid="uid://d1pxi4dbq0ieq" path="res://asset/textures/icon/crystal.svg" id="10_g0y7p"]
+[ext_resource type="PackedScene" uid="uid://dldi24576xf83" path="res://scene/parts/sp_grid_container.tscn" id="11_1n40d"]
+[ext_resource type="Texture2D" uid="uid://jkcnl41xn5nt" path="res://asset/textures/icon/ri--knife-blood-fill.svg" id="11_3d0gw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a2w1i"]
 shader = ExtResource("2_0gwxm")
@@ -27,7 +29,7 @@ gradient = SubResource("Gradient_8pn3e")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gwxm"]
 shader = ExtResource("2_0gwxm")
-shader_parameter/blur_amount = 1.0000000475
+shader_parameter/blur_amount = 0.250000011875
 shader_parameter/saturation = 1.6
 shader_parameter/tint = Color(0.03137255, 0.039215688, 0.08627451, 0.4509804)
 
@@ -58,6 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CardContainer/TextureContainer" unique_id=1403931678]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,7 +79,6 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="TextureArt" type="TextureRect" parent="CardContainer/TextureContainer" unique_id=1835029970]
-visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -364,64 +366,44 @@ theme_override_fonts/font = ExtResource("3_fi3fs")
 theme_override_font_sizes/font_size = 24
 text = "14"
 
-[node name="Ability" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=223469508]
+[node name="AbilityAndSPAtkContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=505944580]
 layout_mode = 2
 
-[node name="AbilityTriggerContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability" unique_id=558000028]
-custom_minimum_size = Vector2(0, 17)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="ColorRect" type="ColorRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer" unique_id=1445365858]
-layout_mode = 2
-color = Color(0.16078432, 0.4745098, 1, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer" unique_id=1540438567]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Control" type="Control" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer" unique_id=874057325]
-custom_minimum_size = Vector2(25, 17)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer/Control" unique_id=1649278274]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 2
-
-[node name="TextureRect" type="TextureRect" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer/Control/MarginContainer" unique_id=1527488849]
-layout_mode = 2
-texture = ExtResource("4_8pn3e")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer" unique_id=1168143403]
-layout_mode = 2
-theme_override_constants/margin_right = 5
-
-[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability/AbilityTriggerContainer/HBoxContainer/MarginContainer" unique_id=1354870639]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_fi3fs")
-theme_override_font_sizes/font_size = 10
-text = "ATTACK"
-
-[node name="AbilityDescription" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/Ability" unique_id=1426467362]
+[node name="Abilities" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/AbilityAndSPAtkContainer" unique_id=1521468014]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("6_m05dj")
+
+[node name="Ability1" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/AbilityAndSPAtkContainer/Abilities" unique_id=1097095912 instance=ExtResource("9_q57fe")]
+layout_mode = 2
+color = Color(0.9275816, 0.09260597, 5.7756904e-07, 1)
+trigger_texture = ExtResource("9_1n40d")
+trigger_name = "ATTACK"
+description = "All ally units +4 [ATK]"
+
+[node name="Ability2" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/AbilityAndSPAtkContainer/Abilities" unique_id=1177033900 instance=ExtResource("9_q57fe")]
+layout_mode = 2
+color = Color(0.59607846, 0.09411765, 0.0627451, 1)
+trigger_texture = ExtResource("11_3d0gw")
+trigger_name = "KILL"
+description = "[HEAL] 15 [HP] to all ally units"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/AbilityAndSPAtkContainer" unique_id=512750565]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/AbilityAndSPAtkContainer/VBoxContainer" unique_id=1582480491]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fi3fs")
 theme_override_font_sizes/font_size = 10
-text = "All ally units +4 [ATK]"
-vertical_alignment = 1
+text = "SP ATK"
+horizontal_alignment = 1
+
+[node name="GridContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer/AbilityAndSPAtkContainer/VBoxContainer" unique_id=1120528058 instance=ExtResource("11_1n40d")]
+layout_mode = 2
+size_flags_vertical = 4
+columns = 3
+pattern = "0,5,0
+5,X,5
+0,5,0"
 
 [node name="Divider2Container" type="MarginContainer" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=777582917]
 layout_mode = 2
@@ -434,15 +416,15 @@ layout_mode = 2
 color = Color(1, 1, 1, 0.118)
 
 [node name="Label" type="Label" parent="CardContainer/InfoContainer/InfoContainer/MainInfoContainer/VBoxContainer" unique_id=987717512]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.77254903)
-theme_override_fonts/font = ExtResource("6_m05dj")
+theme_override_fonts/font = ExtResource("3_fi3fs")
 theme_override_font_sizes/font_size = 9
-text = "\"Forged in the ancient fires of Avalon, the Vanguard holds the line between worlds.\""
+text = "\"Dead or alive!\""
 autowrap_mode = 3
 
 [node name="WhiteOutline" type="MarginContainer" parent="CardContainer" unique_id=1510602839]
-visible = false
 modulate = Color(1, 1, 1, 0.050980393)
 z_index = 1
 layout_mode = 1
@@ -451,10 +433,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="TopOutline" type="ColorRect" parent="CardContainer/WhiteOutline" unique_id=1316121615]
 custom_minimum_size = Vector2(1, 1)

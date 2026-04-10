@@ -4,7 +4,18 @@ extends Node2D
 @onready var renderer: SubViewport = $Renderer
 
 func _ready() -> void:
-	_render()
+	#_render()
+	
+	var req := HTTPRequest.new()
+	add_child(req)
+	var err := req.request("https://api.iconify.design/ri/knife-blood-fill.svg?color=white")
+	if err!=OK:
+		print(err)
+	req.request_completed.connect(
+		func(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+			print("result")
+	)
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
