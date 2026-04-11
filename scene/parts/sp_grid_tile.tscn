@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cvrfpn3tfvp6" path="res://asset/textures/nine_slices/tile_grid_slice_transparent.png" id="1_b62ud"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="2_b62ud"]
 [ext_resource type="Script" uid="uid://tl7sgb6x1bb5" path="res://scene/parts/sp_grid_tile.gd" id="2_y4l3k"]
+[ext_resource type="Texture2D" uid="uid://cwv3714ytvsom" path="res://asset/textures/icon/ri--close-large-fill.svg" id="4_y4l3k"]
 
 [node name="SPGridTile" type="NinePatchRect" unique_id=1270248852]
 texture_filter = 1
@@ -22,6 +23,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CrossTexture" type="TextureRect" parent="MarginContainer" unique_id=2101203421]
+visible = false
+modulate = Color(1, 1, 1, 0.34901962)
+layout_mode = 2
+texture = ExtResource("4_y4l3k")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1097190162]
 visible = false

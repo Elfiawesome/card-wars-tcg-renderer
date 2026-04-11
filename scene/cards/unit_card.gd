@@ -4,20 +4,17 @@ class_name UnitCard extends Control
 const ABILITY_TEXT_SCENE := preload("uid://bcn8333rsty1y")
 const SP_GRID_CONTAINER_SCENE = preload("uid://dldi24576xf83")
 
+@onready var texture_art: TextureRect = $TextureContainer/TextureArt
+@onready var unit_name_label: Label = $InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/RightInfoContainer/Label
+@onready var world_label: Label = $InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/RightInfoContainer/WorldContainer/WorldLabel
+@onready var hp_label: Label = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/StatContainer/HBoxContainer/HpContainer/HBoxContainer/Label
+@onready var atk_label: Label = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/StatContainer/HBoxContainer/AtkContainer/HBoxContainer/Label
+@onready var pt_label: Label = $InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/PointBox/PointContainer/Label
+@onready var flavour_text_label: Label = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/Label
 
-@onready var card_container: Control = $CardContainer
-
-@onready var texture_art: TextureRect = $CardContainer/TextureContainer/TextureArt
-@onready var unit_name_label: Label = $CardContainer/InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/RightInfoContainer/Label
-@onready var world_label: Label = $CardContainer/InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/RightInfoContainer/WorldContainer/WorldLabel
-@onready var hp_label: Label = $CardContainer/InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/StatContainer/HBoxContainer/HpContainer/HBoxContainer/Label
-@onready var atk_label: Label = $CardContainer/InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/StatContainer/HBoxContainer/AtkContainer/HBoxContainer/Label
-@onready var pt_label: Label = $CardContainer/InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/PointBox/PointContainer/Label
-@onready var flavour_text_label: Label = $CardContainer/InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/Label
-
-@onready var abilities_container: VBoxContainer = $CardContainer/InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/AbilityAndSPAtkContainer/AbilitiesContainer
-@onready var sp_atk_container: VBoxContainer = $CardContainer/InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/AbilityAndSPAtkContainer/SPAtkContainer
-@onready var sp_atk_container_inner: HBoxContainer = $CardContainer/InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/AbilityAndSPAtkContainer/SPAtkContainer/HBoxContainer
+@onready var abilities_container: VBoxContainer = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/AbilityAndSPAtkContainer/AbilitiesContainer
+@onready var sp_atk_container: VBoxContainer = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/AbilityAndSPAtkContainer/SPAtkContainer
+@onready var sp_atk_container_inner: HBoxContainer = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/AbilityAndSPAtkContainer/SPAtkContainer/HBoxContainer
 
 
 @export var unit_data: UnitCardDataResource:
