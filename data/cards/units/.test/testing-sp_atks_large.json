@@ -1,0 +1,11 @@
+{
+	"name": "Testing SP ATK",
+	"hp": 0,
+	"atk": 0,
+	"pt": 0,
+	"flavour_text": "",
+	"sp_atks": [
+		{"type": "custom", "pattern":"0,0,0,0,0,0,0\n0,X,0,0,0,X,0\n0,0,X,0,X,0,0\n0,0,0,*X,0,0,0\n0,0,X,0,X,0,0\n0,X,0,0,0,X,0\n0,0,0,0,0,0,0"}
+	]
+}
+

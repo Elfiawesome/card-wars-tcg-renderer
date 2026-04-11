@@ -1,0 +1,49 @@
+{
+	"name": "Testing Abilities",
+	"hp": 0,
+	"atk": 0,
+	"pt": 0,
+	"flavour_text": "",
+	"abilities": [
+		{
+			"type": "active",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "ally_death",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "attack",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "charge",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "damaged",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "deathwish",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "empowered",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "kill",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "passive",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		},
+		{
+			"type": "warcry",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		}
+	]
+}

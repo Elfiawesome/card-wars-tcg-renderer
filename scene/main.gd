@@ -6,7 +6,7 @@ const UNIT_CARD_SCENE = preload("uid://8c5qmt2osg8k")
 @onready var renderer_manager: RendererManager = $RendererManager
 
 func _ready() -> void:
-	data_manager.load_all("C:/Users/elfia/Downloads/data")
+	data_manager.load_all("res://data")
 	await data_manager.finished_loading
 	print("Done Loading")
 	

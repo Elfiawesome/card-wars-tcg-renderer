@@ -1,0 +1,21 @@
+{
+	"name": "Bounty Hunter Kyle",
+	"world": "south_park",
+	"hp": 12,
+	"atk": 14,
+	"pt": 12,
+	"flavour_text": "\"Dead or alive!\"",
+	"abilities": [
+		{
+			"type": "attack",
+			"description": "All ally units +4 [ATK]."
+		},
+		{
+			"type": "kill",
+			"description": "[HEAL] 15 [HP] to all ally units."
+		}
+	],
+	"art": {
+		"src": "units/south_park/bounty_hunter_kyle.png"
+	}
+}

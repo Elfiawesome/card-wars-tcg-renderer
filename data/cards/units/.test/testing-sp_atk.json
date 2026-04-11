@@ -1,0 +1,12 @@
+{
+	"name": "Testing SP ATK",
+	"hp": 0,
+	"atk": 0,
+	"pt": 0,
+	"flavour_text": "",
+	"sp_atks": [
+		{
+			"type": "cross_atk"
+		}
+	]
+}

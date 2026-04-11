@@ -7,12 +7,15 @@ var _pending_requests_works: int = 0
 var ABILITY_TYPES: Dictionary[String, Dictionary] = {}
 var SP_ATKS: Dictionary[String, Dictionary] = {}
 var ARTS: Dictionary[String, Texture] = {}
+var WORLDS: Dictionary[String, Dictionary] = {}
+
 var UNIT_DEF: Dictionary[String, UnitCardDataResource] = {}
 
 func load_all(dir: String = "res://data") -> void:
 	var root_dir := DirAccess.open(dir)
 	
-	var unit_dir := open_relative(root_dir, "units")
+	var unit_dir := open_relative(root_dir, "cards/units")
+	var world_dir := open_relative(root_dir, "worlds")
 	var art_dir := open_relative(root_dir, "art")
 	var ability_types_dir := open_relative(root_dir, "ability_types")
 	var sp_atk_dir := open_relative(root_dir, "sp_atks")
@@ -20,15 +23,23 @@ func load_all(dir: String = "res://data") -> void:
 	if art_dir:
 		for ad in get_all_files(art_dir):
 			var file_path := art_dir.get_current_dir().path_join(ad)
-			var art_id := ad
-			
-			var img := Image.load_from_file(file_path)
-			var texture := ImageTexture.create_from_image(img)
-			ARTS[art_id] = texture
+			if file_path.get_extension().to_lower() in ["png", "jpg", "webp"]:
+				var art_id := ad
+				
+				var img := Image.load_from_file(file_path)
+				var texture := ImageTexture.create_from_image(img)
+				ARTS[art_id] = texture
+	
+	if world_dir:
+		for w in get_all_files(world_dir):
+			var file_path := world_dir.get_current_dir().path_join(w)
+			var fa := FileAccess.open(file_path, FileAccess.READ)
+			var data: Dictionary = JSON.parse_string(fa.get_as_text())
+			var world_id := w.get_basename()
+			WORLDS[world_id] = data
 	
 	if ability_types_dir:
 		for at in get_all_files(ability_types_dir):
-			
 			var file_path := ability_types_dir.get_current_dir().path_join(at)
 			var fa := FileAccess.open(file_path, FileAccess.READ)
 			var data: Dictionary = JSON.parse_string(fa.get_as_text())
@@ -64,8 +75,10 @@ func load_all(dir: String = "res://data") -> void:
 				if art.has("src"):
 					var texture: Texture = ARTS.get(art["src"], null)
 					if texture != null: unit.texture_art = texture
+			if data.has("world"): 
+				var world_data: Dictionary = WORLDS.get(data["world"], {})
+				if world_data.has("name"): unit.world_name = world_data.get("name")
 			if data.has("name"): unit.unit_name = data.get("name")
-			if data.has("world"): unit.world_name = data.get("world")
 			if data.has("flavour_text"): unit.flavour_text = data.get("flavour_text")
 			if data.has("hp"): unit.hp = data.get("hp")
 			if data.has("atk"): unit.atk = data.get("atk")
