@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cfewyn1s7e43r" path="res://scene/cards/unit_card.gd" id="1_q57fe"]
 [ext_resource type="Shader" uid="uid://d0t3og72kg0jg" path="res://asset/shaders/blur.gdshader" id="2_0gwxm"]
-[ext_resource type="Texture2D" uid="uid://cmli87jvm5bko" path="res://data/art/card_wars-universal_elfiyan.png" id="2_kuav8"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="3_fi3fs"]
 [ext_resource type="Texture2D" uid="uid://dhqkm4keqsyhr" path="res://asset/textures/icon/ri--heart-fill.svg" id="4_f1nea"]
 [ext_resource type="Texture2D" uid="uid://b07obi1nosrck" path="res://asset/textures/icon/ri--sword-fill.svg" id="4_m05dj"]
@@ -56,7 +55,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_kuav8")
 expand_mode = 5
 stretch_mode = 6
 

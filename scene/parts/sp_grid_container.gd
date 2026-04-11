@@ -26,10 +26,8 @@ const TILE = preload("res://scene/parts/sp_grid_tile.tscn")
 					var tile: SPAtkGridTile = TILE.instantiate()
 					add_child(tile)
 					if x.begins_with("*"):
-						print("ok its a ")
 						tile.cross_atk = true
 						x = x.right(-1)
-						print(x)
 					
 					if x == "0" or x == "o" or x == "O":
 						tile.filled = false

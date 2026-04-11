@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c8q737s43tss2"]
+
+[ext_resource type="Script" uid="uid://s4uia5ly0tut" path="res://scene/main.gd" id="1_itxqv"]
+[ext_resource type="Script" uid="uid://j75tf1cs6spv" path="res://scene/data_manager.gd" id="2_v0l8b"]
+[ext_resource type="Script" uid="uid://c85oqyqjmrjkg" path="res://scene/renderer_manager.gd" id="2_wp4xf"]
+
+[node name="Main" type="Node2D" unique_id=1105215447]
+script = ExtResource("1_itxqv")
+
+[node name="DataManager" type="Node" parent="." unique_id=1758011662]
+script = ExtResource("2_v0l8b")
+
+[node name="RendererManager" type="SubViewport" parent="." unique_id=1403347529]
+handle_input_locally = false
+size = Vector2i(704, 984)
+render_target_update_mode = 4
+script = ExtResource("2_wp4xf")

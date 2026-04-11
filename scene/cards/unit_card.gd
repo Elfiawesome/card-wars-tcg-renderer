@@ -51,8 +51,8 @@ func load_data(data: UnitCardDataResource) -> void:
 	if !data.sp_atks.is_empty(): sp_atk_container.visible = true
 	for s in data.sp_atks:
 		var sp_atk_grid: SPAtkGridContainer = SP_GRID_CONTAINER_SCENE.instantiate()
-		sp_atk_grid.pattern = s.pattern
 		sp_atk_container_inner.add_child(sp_atk_grid)
+		sp_atk_grid.pattern = s.pattern
 	
 	if data.abilities.is_empty() && !data.sp_atks.is_empty():
 		sp_atk_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
