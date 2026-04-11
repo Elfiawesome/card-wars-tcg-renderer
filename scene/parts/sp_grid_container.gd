@@ -1,5 +1,5 @@
 @tool
-extends GridContainer
+class_name SPAtkGridContainer extends GridContainer
 
 const TILE = preload("res://scene/parts/sp_grid_tile.tscn")
 
@@ -8,7 +8,7 @@ const TILE = preload("res://scene/parts/sp_grid_tile.tscn")
 		tile_color = value
 		pattern = pattern
 
-@export_multiline() var pattern = "0,0,0\n0,0,0\n0,0,0":
+@export_multiline() var pattern: String  = "0,0,0\n0,0,0\n0,0,0":
 	set(value):
 		pattern = value
 		columns = 1
@@ -23,7 +23,7 @@ const TILE = preload("res://scene/parts/sp_grid_tile.tscn")
 			for y in value.split("\n"):
 				var row: Array = []
 				for x in y.split(","):
-					var tile := TILE.instantiate()
+					var tile: SPAtkGridTile = TILE.instantiate()
 					add_child(tile)
 					
 					if x == "0" or x == "o" or x == "O":

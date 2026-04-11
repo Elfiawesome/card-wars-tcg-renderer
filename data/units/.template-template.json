@@ -1,0 +1,30 @@
+{
+	"name": "",
+	"hp": 0,
+	"atk": 0,
+	"pt": 0,
+	"flavour_text": "",
+	"abilities": [
+		{
+			"type": "path/to/ability",
+			"description": ""
+		}
+	],
+	"sp_atk": [
+		{
+			"type": ""
+		},
+		{
+			"type": "custom",
+			"name": "",
+			"pattern": ""
+		}
+	],
+	"art": {
+		"path": "path/to/art",
+		"offset": [
+			0,
+			0
+		]
+	}
+}

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d65mge2xxb63" path="res://scene/parts/ability_text.gd" id="1_bisav"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="2_5iqlh"]
-[ext_resource type="Texture2D" uid="uid://c41agu56cgkoy" path="res://asset/textures/icon/ri--error-warning-fill.svg" id="2_bisav"]
+[ext_resource type="FontVariation" uid="uid://c3rx16v67f23f" path="res://asset/fonts/hedvig_letters_sans/hedvig_letters_sans.tres" id="4_bisav"]
 
 [node name="Ability" type="HBoxContainer" unique_id=1097095912]
 size_flags_horizontal = 3
@@ -40,7 +40,6 @@ theme_override_constants/margin_bottom = 2
 
 [node name="TextureRect" type="TextureRect" parent="AbilityTriggerContainer/HBoxContainer/Control/MarginContainer" unique_id=548848192]
 layout_mode = 2
-texture = ExtResource("2_bisav")
 expand_mode = 1
 stretch_mode = 5
 
@@ -53,15 +52,13 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_5iqlh")
 theme_override_font_sizes/font_size = 10
-text = "ERROR"
 
 [node name="AbilityDescription" type="Label" parent="." unique_id=34148518]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("2_5iqlh")
+theme_override_fonts/font = ExtResource("4_bisav")
 theme_override_font_sizes/font_size = 10
-text = "Error"
 vertical_alignment = 1
 autowrap_mode = 3

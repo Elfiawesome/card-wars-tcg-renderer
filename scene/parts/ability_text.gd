@@ -1,22 +1,12 @@
 @tool
-extends HBoxContainer
+class_name AbilityText extends HBoxContainer
 
-@export var color: Color = Color.RED:
-	set(value):
-		color = value
-		$AbilityTriggerContainer/ColorRect.color = value
 
-@export var trigger_texture: Texture2D = preload("res://asset/textures/icon/ri--error-warning-fill.svg"):
-	set(value):
-		trigger_texture = value
-		$AbilityTriggerContainer/HBoxContainer/Control/MarginContainer/TextureRect.texture = trigger_texture
 
-@export var trigger_name: String = "ERROR":
+@export var ability_data: AbilityTextDataResource:
 	set(value):
-		trigger_name = value
-		$AbilityTriggerContainer/HBoxContainer/MarginContainer/Label.text = value
-
-@export var description: String = "Error":
-	set(value):
-		description = value
-		$AbilityDescription.text = value
+		ability_data = value
+		($AbilityTriggerContainer/ColorRect as ColorRect).color = value.color
+		($AbilityTriggerContainer/HBoxContainer/Control/MarginContainer/TextureRect as TextureRect).texture = value.icon_texture
+		($AbilityTriggerContainer/HBoxContainer/MarginContainer/Label as Label).text = value.name
+		($AbilityDescription as Label).text = value.description

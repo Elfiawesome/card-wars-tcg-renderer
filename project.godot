@@ -15,6 +15,13 @@ run/main_scene="uid://c8q737s43tss2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_property_access=2
+gdscript/warnings/unsafe_method_access=2
+gdscript/warnings/unsafe_void_return=2
+
 [dotnet]
 
 project/assembly_name="card-wars-tcg-design"
@@ -22,7 +29,3 @@ project/assembly_name="card-wars-tcg-design"
 [physics]
 
 3d/physics_engine="Jolt Physics"
-
-[rendering]
-
-rendering_device/driver.windows="d3d12"

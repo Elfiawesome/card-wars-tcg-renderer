@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://n0deohfvdc0f"]
 
-[ext_resource type="Texture2D" uid="uid://cvrfpn3tfvp6" path="res://asset/textures/tile_grid_slice_transparent.png" id="1_b62ud"]
+[ext_resource type="Texture2D" uid="uid://cvrfpn3tfvp6" path="res://asset/textures/nine_slices/tile_grid_slice_transparent.png" id="1_b62ud"]
 [ext_resource type="FontVariation" uid="uid://dfurxb3bwptnm" path="res://asset/fonts/rajdhani/rajdhani.tres" id="2_b62ud"]
 [ext_resource type="Script" uid="uid://tl7sgb6x1bb5" path="res://scene/parts/sp_grid_tile.gd" id="2_y4l3k"]
 
@@ -14,7 +14,6 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 script = ExtResource("2_y4l3k")
-tile_color = null
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=376808025]
 layout_mode = 1
