@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbqrbhhufmc2r"
-path="res://.godot/imported/bounty_hunter_kyle.png-3d9947931320dbe737b473827e50a7e2.ctex"
+uid="uid://ck47dt0y18kcl"
+path="res://.godot/imported/engineer_patrick.png-c2ffaaecc5691379b00ad982958ec9b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://output/cards/south_park/bounty_hunter_kyle.png"
-dest_files=["res://.godot/imported/bounty_hunter_kyle.png-3d9947931320dbe737b473827e50a7e2.ctex"]
+source_file="res://output/cards/engineer_patrick.png"
+dest_files=["res://.godot/imported/engineer_patrick.png-c2ffaaecc5691379b00ad982958ec9b1.ctex"]
 
 [params]
 

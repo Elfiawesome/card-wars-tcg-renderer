@@ -1,0 +1,12 @@
+{
+	"name": "Engineer Patrick",
+	"world": "card_wars",
+	"hp": 0,
+	"atk": 0,
+	"pt": 0,
+	"flavour_text": "",
+	"abilities": [],
+	"art": {
+		"src": "heroes/card_wars-engineer_patrick.png"
+	}
+}
