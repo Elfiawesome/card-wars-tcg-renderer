@@ -70,14 +70,20 @@ func load_all(dir: String = "res://data") -> void:
 			var unit_id := u.get_basename()
 			
 			var unit := UnitCardDataResource.new()
-			if data.has("art"):
-				var art: Dictionary = data.get("art", {})
+			if data.has("character_art"):
+				var art: Dictionary = data.get("character_art", {})
 				if art.has("src"):
 					var texture: Texture = ARTS.get(art["src"], null)
-					if texture != null: unit.texture_art = texture
+					if texture != null: unit.character_art = texture
 			if data.has("world"): 
 				var world_data: Dictionary = WORLDS.get(data["world"], {})
 				if world_data.has("name"): unit.world_name = world_data.get("name")
+			if data.has("background_art"):
+				var art: Dictionary = data.get("background_art", {})
+				if art.has("src"):
+					var texture: Texture = ARTS.get(art["src"], null)
+					print(texture)
+					if texture != null: unit.background_art = texture
 			if data.has("name"): unit.unit_name = data.get("name")
 			if data.has("flavour_text"): unit.flavour_text = data.get("flavour_text")
 			if data.has("hp"): unit.hp = data.get("hp")

@@ -1,6 +1,7 @@
 class_name UnitCardDataResource extends Resource
 
-@export var texture_art: Texture
+@export var character_art: Texture
+@export var background_art: Texture
 @export_placeholder("Unit Name") var unit_name: String = "Error Unit Name"
 @export_placeholder("World Name") var world_name: String = "Error Unit World"
 @export_placeholder("Flavor Text") var flavour_text: String = "Error Flavour Text"

@@ -15,7 +15,10 @@
 			"description": "[HEAL] 15 [HP] to all ally units."
 		}
 	],
-	"art": {
-		"src": "units/south_park/bounty_hunter_kyle.png"
+	"character_art": {
+		"src": "units/south_park/bounty_hunter_kyle_character.png"
+	},
+	"background_art": {
+		"src": "units/south_park/bounty_hunter_kyle_background.png"
 	}
 }

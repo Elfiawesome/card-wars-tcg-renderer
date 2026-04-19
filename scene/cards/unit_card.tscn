@@ -49,7 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WallpaperArt" type="TextureRect" parent="TextureContainer" unique_id=1775090872]
+[node name="BackgroundArt" type="TextureRect" parent="TextureContainer" unique_id=1775090872]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,7 +59,7 @@ grow_vertical = 2
 expand_mode = 5
 stretch_mode = 6
 
-[node name="TextureArt" type="TextureRect" parent="TextureContainer" unique_id=1134226534]
+[node name="CharacterArt" type="TextureRect" parent="TextureContainer" unique_id=1134226534]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

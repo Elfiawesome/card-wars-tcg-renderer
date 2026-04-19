@@ -4,7 +4,8 @@ class_name UnitCard extends Control
 const ABILITY_TEXT_SCENE := preload("uid://bcn8333rsty1y")
 const SP_GRID_CONTAINER_SCENE = preload("uid://dldi24576xf83")
 
-@onready var texture_art: TextureRect = $TextureContainer/TextureArt
+@onready var character_art: TextureRect = $TextureContainer/CharacterArt
+@onready var background_art: TextureRect = $TextureContainer/BackgroundArt
 @onready var unit_name_label: Label = $InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/RightInfoContainer/Label
 @onready var world_label: Label = $InfoContainer/TopInfoContainer/NameInfoContainer/HBoxContainer/RightInfoContainer/WorldContainer/WorldLabel
 @onready var hp_label: Label = $InfoContainer/BottomInfoContainer/MainInfoContainer/MainInfoContainer/StatContainer/HBoxContainer/HpContainer/HBoxContainer/Label
@@ -34,7 +35,8 @@ func reset_data() -> void:
 	sp_atk_container.size_flags_horizontal = Control.SIZE_FILL
 
 func load_data(data: UnitCardDataResource) -> void:
-	texture_art.texture = data.texture_art
+	character_art.texture = data.character_art
+	background_art.texture = data.background_art
 	unit_name_label.text = data.unit_name
 	world_label.text = data.world_name
 	hp_label.text = str(data.hp)
